@@ -1,0 +1,48 @@
+server:
+  port: 9000
+  #db
+spring:
+  datasource:
+    password: 1988
+    url: jdbc:postgresql://localhost:5432/jwt
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+      format_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  #liquibase
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    url: jdbc:postgresql://localhost:5432/jwt
+    user: postgres
+    password: 1988
+  #mail
+  mail:
+    host: smtp.mail.ru
+    port: 465
+    username: moonbl4@mail.ru
+    password: ddeR6nNnxd4e3MJwx4vC
+    protocol: smtps
+    properties:
+      mail:
+        smtp:
+          auth: true
+  #utils
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  #logging
+logging:
+  file:
+    name: logs/application-debug.log
+  pattern:
+    console: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    ROOT: WARN
+    com.moon.jwtsecurity: DEBUG
